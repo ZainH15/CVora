@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CVora — Your CV Analysis</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a href="/" class="brand">
+            CV<span>ora</span>
+        </a>
+
+        <a href="/" class="nav-action">
+            Analyse another CV
+        </a>
+
+    </nav>
+
+
+    <main class="results-page">
+
+        <section class="results-header">
+
+            <div class="eyebrow">
+                CV ANALYSIS COMPLETE
+            </div>
+
+            <h1>
+                Your CV at a glance.
+            </h1>
+
+            <p>
+                Here's what CVora found in your CV.
+            </p>
+
+        </section>
+
+
+        <section class="score-panel">
+
+            <div class="score-ring" style="--score: {{ score }};">
+
+                <div class="score-inner">
+
+                    <span class="score-number">
+                        {{ score }}
+                    </span>
+
+                    <span class="score-out-of">
+                        / 100
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="score-summary">
+
+                <div class="score-label">
+                    OVERALL SCORE
+                </div>
+
+                {% if score >= 80 %}
+
+                    <h2>
+                        Strong foundation
+                    </h2>
+
+                    <p>
+                        Your CV has many of the key elements expected
+                        in a well-structured CV.
+                    </p>
+
+                {% elif score >= 60 %}
+
+                    <h2>
+                        Good foundation
+                    </h2>
+
+                    <p>
+                        Your CV has a solid structure, with several
+                        areas that could be strengthened.
+                    </p>
+
+                {% else %}
+
+                    <h2>
+                        Room to improve
+                    </h2>
+
+                    <p>
+                        Your CV has some important elements, but there
+                        are several areas worth improving.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+
+        <section class="feedback-section">
+
+    <div class="section-title">
+
+        <div class="eyebrow">
+            AI REVIEW
+        </div>
+
+        <h2>
+            What CVora found.
+        </h2>
+
+        <p>
+            A detailed review of the strengths, weaknesses, and improvements
+            identified in your CV.
+        </p>
+
+    </div>
+
+
+    <div class="feedback-grid">
+
+        <div class="feedback-card">
+
+            <div class="feedback-card-header">
+                <span class="feedback-icon">+</span>
+
+                <div>
+                    <div class="feedback-label">
+                        STRENGTHS
+                    </div>
+
+                    <h3>
+                        What's working
+                    </h3>
+                </div>
+            </div>
+
+
+            <ul class="feedback-list">
+
+                {% for item in analysis.strengths %}
+
+                    <li>
+                        {{ item }}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+        <div class="feedback-card">
+
+            <div class="feedback-card-header">
+                <span class="feedback-icon">!</span>
+
+                <div>
+                    <div class="feedback-label">
+                        WEAKNESSES
+                    </div>
+
+                    <h3>
+                        What needs attention
+                    </h3>
+                </div>
+            </div>
+
+
+            <ul class="feedback-list">
+
+                {% for item in analysis.weaknesses %}
+
+                    <li>
+                        {{ item }}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+        <div class="feedback-card feedback-card-wide">
+
+            <div class="feedback-card-header">
+                <span class="feedback-icon">→</span>
+
+                <div>
+                    <div class="feedback-label">
+                        IMPROVEMENTS
+                    </div>
+
+                    <h3>
+                        How to make it stronger
+                    </h3>
+                </div>
+            </div>
+
+
+            <ul class="feedback-list">
+
+                {% for item in analysis.improvements %}
+
+                    <li>
+                        {{ item }}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+
+        <div class="feedback-card feedback-card-wide assessment-card">
+
+            <div class="feedback-card-header">
+                <span class="feedback-icon">✓</span>
+
+                <div>
+                    <div class="feedback-label">
+                        OVERALL ASSESSMENT
+                    </div>
+
+                    <h3>
+                        The bigger picture
+                    </h3>
+                </div>
+            </div>
+
+
+            <p class="assessment-text">
+                {{ analysis.assessment }}
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <section class="next-step">
+
+            <div>
+
+                <div class="eyebrow">
+                    READY TO IMPROVE?
+                </div>
+
+                <h2>
+                    Make your next version stronger.
+                </h2>
+
+            </div>
+
+            <a href="/" class="primary-button">
+                Analyse another CV
+                <span>→</span>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-brand">
+            CV<span>ora</span>
+        </div>
+
+        <p>
+            AI-powered CV analysis.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

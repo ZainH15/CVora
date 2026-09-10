@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CVora — AI CV Analysis</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a href="/" class="brand">
+            CV<span>ora</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#how-it-works">How it works</a>
+        </div>
+
+    </nav>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    AI-POWERED CV ANALYSIS
+                </div>
+
+                <h1>
+                    Make your CV<br>
+                    <span>work harder.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Upload your CV and get a clear, intelligent review
+                    of its strengths, weaknesses, and areas for improvement.
+                </p>
+
+
+                <form
+                    id="upload-form"
+                    action="/upload"
+                    method="post"
+                    enctype="multipart/form-data"
+                >
+
+                    <label for="cv" class="drop-zone">
+
+                        <div class="upload-icon">
+                            ↑
+                        </div>
+
+                        <div class="drop-title">
+                            Upload your CV
+                        </div>
+
+                        <div class="drop-subtitle">
+                            Drop your PDF here or click to browse
+                        </div>
+
+                        <div class="file-type">
+                            PDF files only
+                        </div>
+
+                        <input
+                            type="file"
+                            id="cv"
+                            name="cv"
+                            accept=".pdf"
+                            required
+                        >
+
+                    </label>
+
+
+                    <button type="submit" class="analyse-button">
+                        Analyse my CV
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <div class="trust-row">
+                    <span>✓ No account required</span>
+                    <span>✓ CV deleted after analysis</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="how-it-works" class="how-section">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    HOW IT WORKS
+                </div>
+
+                <h2>
+                    From CV to insight.
+                </h2>
+
+                <p>
+                    CVora combines traditional analysis with AI-powered
+                    feedback to give you a clearer picture of your CV.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Upload
+                    </h3>
+
+                    <p>
+                        Upload your CV as a PDF through the secure
+                        analysis form.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Analyse
+                    </h3>
+
+                    <p>
+                        CVora extracts the text and evaluates
+                        important aspects of your CV.
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Improve
+                    </h3>
+
+                    <p>
+                        Receive an overall score and practical
+                        AI-generated feedback.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-brand">
+            CV<span>ora</span>
+        </div>
+
+        <p>
+            AI-powered CV analysis.
+        </p>
+
+    </footer>
+
+
+    <div id="loading" class="loading-screen">
+
+        <div class="loading-content">
+
+            <div class="spinner"></div>
+
+            <h2>
+                Analysing your CV
+            </h2>
+
+            <p>
+                CVora is reviewing your CV. This may take a few seconds.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const form = document.getElementById("upload-form");
+        const loading = document.getElementById("loading");
+
+        form.addEventListener("submit", function () {
+            loading.classList.add("active");
+        });
+
+    </script>
+
+</body>
+
+</html>
