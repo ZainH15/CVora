@@ -976,3 +976,152 @@ footer p {
     }
 
 }
+
+/* ================================
+   MOBILE RESPONSIVENESS
+   ================================ */
+
+@media (max-width: 768px) {
+
+    /* Navigation */
+
+    .navbar {
+        padding: 18px 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-action {
+        font-size: 13px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        padding: 80px 20px 70px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 11vw, 64px);
+        line-height: 1.05;
+    }
+
+    .hero-description {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+
+    /* Upload */
+
+    .drop-zone {
+        padding: 40px 20px;
+    }
+
+    .drop-title {
+        font-size: 18px;
+    }
+
+    .analyse-button {
+        width: 100%;
+    }
+
+    .trust-row {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
+
+    /* How it works */
+
+    .how-section {
+        padding: 70px 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 36px;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+
+    /* Results */
+
+    .results-page {
+        padding: 60px 20px;
+    }
+
+    .results-header h1 {
+        font-size: 42px;
+        line-height: 1.1;
+    }
+
+    .results-header p {
+        font-size: 16px;
+    }
+
+
+    /* Score */
+
+    .score-panel {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        padding: 30px 20px;
+    }
+
+    .score-summary {
+        align-items: center;
+    }
+
+
+    /* AI feedback */
+
+    .feedback-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .feedback-card-wide {
+        grid-column: auto;
+    }
+
+    .feedback-card {
+        padding: 24px;
+    }
+
+
+    /* Next step */
+
+    .next-step {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        padding: 30px 24px;
+    }
+
+    .primary-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+
+    /* Footer */
+
+    footer {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+}

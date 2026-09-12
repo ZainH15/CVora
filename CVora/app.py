@@ -2,15 +2,17 @@ import os
 import json
 
 from flask import Flask, render_template, request
+from werkzeug.utils import secure_filename
 from pypdf import PdfReader
 from openai import OpenAI
 
 
 app = Flask(__name__)
 
-client = OpenAI()
+app.config["MAX_CONTENT_LENGTH"] = 5 * 1024 * 1024
+app.config["UPLOAD_FOLDER"] = os.getenv("UPLOAD_FOLDER", "uploads")
 
-app.config["UPLOAD_FOLDER"] = "uploads"
+client = OpenAI()
 
 
 @app.route("/")
@@ -33,7 +35,8 @@ def upload():
 
     os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
-    filepath = os.path.join(app.config["UPLOAD_FOLDER"], cv.filename)
+    filename = secure_filename(cv.filename)
+    filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
     cv.save(filepath)
 
     try:
@@ -146,8 +149,9 @@ CV:
             analysis=analysis
         )
 
-    except Exception:
-        return ("CVora couldn't read that PDF. Please make sure it is a valid, readable PDF.", 400)
+    except Exception as error:
+        print("CVora processing error:", error)
+        return "CVora couldn't complete the analysis. Please try again in a moment.", 500
 
     finally:
         if os.path.exists(filepath):
