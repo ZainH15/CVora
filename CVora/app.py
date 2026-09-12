@@ -47,8 +47,8 @@ def upload():
             if text:
                 cv_text += text + "\n"
 
-    except Exception:
-        return ("CVora couldn't read that PDF. Please make sure it is a valid, readable PDF.", 400)
+        if not cv_text.strip():
+            return ("CVora couldn't find any readable text in this PDF. Please upload a text-based CV.", 400)
 
         text = cv_text.lower()
         score = 0
@@ -145,6 +145,9 @@ CV:
             score=score,
             analysis=analysis
         )
+
+    except Exception:
+        return ("CVora couldn't read that PDF. Please make sure it is a valid, readable PDF.", 400)
 
     finally:
         if os.path.exists(filepath):
