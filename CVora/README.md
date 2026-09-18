@@ -1,7 +1,7 @@
 # AI CV Analyser
 
 #### Video Demo
-[Video Demo](https://youtu.be/6kNeDFZioLs)
+[Video Demo]()
 
 #### Description
 
